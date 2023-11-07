@@ -1,25 +1,21 @@
-import { BrowserRouter, Link, Routes } from "react-router-dom";
-import routes from "./routes/routes";
-import "./App.css";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import './App.css';
+import NavBar from './components/NavBar';
+import Home from './pages/Home';
+import PokemonDetails from './pages/PokemonDetails';
 
 const App = () => {
   return (
     <>
       <BrowserRouter>
-        <nav>
-          <ul className="app-ul">
-            <li className="app-li">
-              <Link to="/">Home</Link>
-            </li>
-          </ul>
-        </nav>
-
-        <main>
-          <Routes>{routes}</Routes>
-        </main>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/pokemondetails/:pokemonid" element={<PokemonDetails />} />
+        </Routes>
       </BrowserRouter>
     </>
   );
-}
+};
 
 export default App;
